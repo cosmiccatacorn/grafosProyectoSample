@@ -5,12 +5,11 @@ import matplotlib.pyplot as plt
 
 
 df = pd.read_csv(r"files/aristas_formato_proyecto_utf8.csv", encoding="utf-8")
-print(df.describe())
-print(df.columns)
+#print(df.describe())
+#print(df.columns)
 
 edges = list(zip(df['id_inicio'], df['id_fin'], df['distancia']))
 
-# Crear grafo no dirigido
 G = nx.Graph()
 G.add_weighted_edges_from(edges)
 
