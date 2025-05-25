@@ -20,6 +20,22 @@ def shortest_path(nodeA, nodeB):
     print("Camino: " , "-->".join(path))
     print(f"Distancia: {distance}")
     return path, distance
+
+
+def visualizar_grafo(grafo):
+    G = nx.Graph()
+
+    for nodo, vecinos in grafo.items():
+        for vecino, peso in vecinos.items():
+            G.add_edge(nodo, vecino, weight=peso)
+
+    pos = nx.spring_layout(G, seed=42)
+    plt.figure(figsize=(16, 10))
+    nx.draw(G, pos, with_labels=True, node_color='lightblue', node_size=1500, font_size=9)
+    etiquetas = nx.get_edge_attributes(G, 'weight')
+    nx.draw_networkx_edge_labels(G, pos, edge_labels=etiquetas, font_size=7)
+    plt.title("Mapa de la Universidad")
+    plt.show()
 # Obtener lista de nodos
 nodes = list(G.nodes)
 
